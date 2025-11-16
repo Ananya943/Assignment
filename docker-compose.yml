@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  ecommerce-pipeline:
+    build: .
+    container_name: ecommerce-recommendation-system
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - JAVA_HOME=/usr/local/openjdk-11
+      - SPARK_HOME=/opt/spark
+      - PYSPARK_PYTHON=python3
+    working_dir: /app
+    command: bash run_all_pipelines.sh
